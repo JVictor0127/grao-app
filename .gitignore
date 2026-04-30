@@ -1,0 +1,11 @@
+# Dependências
+node_modules/
+.env
+
+# Build
+dist/
+build/
+
+# Logs e Misc
+.DS_Store
+npm-debug.log*
