@@ -10,57 +10,50 @@ datasource db {
 // --- NOSSAS TABELAS ---
 
 model Usuario {
-  id             Int               @id @default(autoincrement())
-  nome           String
-  apelido        String?
-  email          String            @unique
-  senha_hash     String
-  
-  // Relacionamentos (Um usuário tem várias categorias, etc)
-  categorias     Categoria[]
-  beneficiarios  Beneficiario[]
-  movimentacoes  RegMovimentacao[]
+  id            Int               @id @default(autoincrement())
+  nome          String
+  apelido       String?
+  email         String            @unique
+  senha         String
+  criadoEm      DateTime          @default(now())
+  movimentacoes RegMovimentacao[]
+  categorias    Categoria[]
+  beneficiarios Beneficiario[]    // <-- Nova relação
 }
 
 model Categoria {
   id            Int               @id @default(autoincrement())
-  usuario_id    Int
   nome          String
-  status        Boolean           @default(true)
-  planoContas   String?
-  dataAtual     DateTime          @default(now())
-  
+  usuario_id    Int
   usuario       Usuario           @relation(fields: [usuario_id], references: [id])
   movimentacoes RegMovimentacao[]
 }
 
+// <-- NOVA TABELA -->
 model Beneficiario {
   id            Int               @id @default(autoincrement())
-  usuario_id    Int
   nome          String
-  status        Boolean           @default(true)
-  dataAtual     DateTime          @default(now())
-  
+  usuario_id    Int
   usuario       Usuario           @relation(fields: [usuario_id], references: [id])
   movimentacoes RegMovimentacao[]
 }
 
 model RegMovimentacao {
-  id              Int          @id @default(autoincrement())
+  id              Int           @id @default(autoincrement())
+  descricao       String
+  valor           Decimal
+  tipo            String
   usuario_id      Int
   id_categoria    Int
-  id_beneficiario Int?         // Interrogação significa que é opcional
-  descricao       String
-  formaPagamento  String?
-  valor           Float
-  tipo            String       // "receita" ou "despesa"
-  status          Boolean      @default(true)
-  dataVencimento  DateTime?
-  dataTitulo      DateTime?
-  dataAtual       DateTime     @default(now())
-
-  // Configuração das Chaves Estrangeiras (Foreign Keys)
   usuario         Usuario       @relation(fields: [usuario_id], references: [id])
   categoria       Categoria     @relation(fields: [id_categoria], references: [id])
-  beneficiario    Beneficiario? @relation(fields: [id_beneficiario], references: [id])
+  criadoEm        DateTime      @default(now())
+
+  // <-- NOVOS CAMPOS -->
+  beneficiario_id Int?
+  beneficiario    Beneficiario? @relation(fields: [beneficiario_id], references: [id])
+  formaPagamento  String?
+  status          String?       @default("Pago") // Ex: Pendente, Pago, Atrasado
+  dataVencimento  DateTime?
+  dataTitulo      DateTime?     @default(now())
 }

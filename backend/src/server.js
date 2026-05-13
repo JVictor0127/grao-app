@@ -5,6 +5,7 @@ require('dotenv').config();
 const authRoutes = require('./routes/authRoutes');
 const movimentacaoRoutes = require('./routes/movimentacaoRoutes'); 
 const categoriaRoutes = require('./routes/categoriaRoutes');
+const beneficiarioRoutes = require('./routes/beneficiarioRoutes');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/movimentacoes', movimentacaoRoutes);
 app.use('/api/categorias', categoriaRoutes);
+app.use('/api/beneficiarios', beneficiarioRoutes);
 
 app.get('/', (req, res) => {
   res.json({ mensagem: 'Servidor do Grão v1.0 está rodando perfeitamente!' });

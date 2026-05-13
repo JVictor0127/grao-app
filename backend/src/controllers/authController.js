@@ -16,7 +16,11 @@ const registrar = async (req, res) => {
     const senha_hash = await bcrypt.hash(senha, salt);
 
     const novoUsuario = await prisma.usuario.create({
-      data: { nome, apelido, email, senha_hash },
+      data: {
+        nome, // ou nome: "Gustavo", como vier do req.body
+        email, 
+        senha: senha_hash, // <-- A CORREÇÃO É AQUI! O campo no banco é "senha"
+      }
     });
 
     res.status(201).json({ 
@@ -41,7 +45,7 @@ const login = async (req, res) => {
     }
 
     // 2. Compara a senha digitada com o hash criptografado salvo no banco
-    const senhaValida = await bcrypt.compare(senha, usuario.senha_hash);
+    const senhaValida = await bcrypt.compare(senha, usuario.senha);
     if (!senhaValida) {
       return res.status(401).json({ erro: 'E-mail ou senha incorretos.' });
     }

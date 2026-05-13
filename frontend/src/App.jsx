@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Login from './pages/Login'; // <-- Importando nossa nova tela
-import Cadastro from './pages/Cadastro'; // <-- Importando o Cadastro
-import Dashboard from './pages/Dashboard'; // <-- Importando o Dashboard
-import Categorias from './pages/Categorias'; // <-- Importando Categoria
-import Lancamentos from './pages/Lancamentos'; // <-- Importando Lançamentos
+import Login from './pages/Login';
+import Cadastro from './pages/Cadastro'; // A tela de usuário volta a brilhar aqui
+import Dashboard from './pages/Dashboard';
+import Atributos from './pages/Atributos'; // <-- Nome novo importado
+import Lancamentos from './pages/Lancamentos';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/categorias" element={<Categorias />} />
+        <Route path="/atributos" element={<Atributos />} /> {/* <-- Rota nova */}
         <Route path="/lancamentos" element={<Lancamentos />} />
       </Routes>
     </div>

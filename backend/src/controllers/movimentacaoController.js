@@ -37,7 +37,7 @@ const listarMovimentacoes = async (req, res) => {
 
     const movimentacoes = await prisma.regMovimentacao.findMany({
       where: { usuario_id },
-      orderBy: { dataAtual: 'desc' }, // Traz as mais recentes primeiro
+      orderBy: { criadoEm: 'desc' }, // Traz as mais recentes primeiro
       include: {
         categoria: true, // Já faz o JOIN e traz os dados da categoria junto
         beneficiario: true

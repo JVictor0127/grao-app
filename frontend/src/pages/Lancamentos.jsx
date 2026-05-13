@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  LayoutDashboard, ArrowRightLeft, Tags, Settings, LogOut, 
-  Trash2, Search, Filter 
-} from 'lucide-react';
+import { LayoutDashboard, ArrowRightLeft, FolderOpen, Settings, LogOut, Trash2, Search, Filter } from 'lucide-react';
 import api from '../services/api';
 
 function Lancamentos() {
@@ -89,8 +86,8 @@ function Lancamentos() {
             <ArrowRightLeft className="w-5 h-5 mr-3" /> Lançamentos
           </button>
           
-          <button onClick={() => navigate('/categorias')} className="flex items-center w-full px-4 py-3 text-gray-400 hover:bg-gray-700 hover:text-white rounded-lg transition">
-            <Tags className="w-5 h-5 mr-3" /> Categorias
+          <button onClick={() => navigate('/atributos')} className="flex items-center w-full px-4 py-3 text-gray-400 hover:bg-gray-700 hover:text-white rounded-lg transition">
+            <FolderOpen className="w-5 h-5 mr-3"/> Atributos
           </button>
         </nav>
         <div className="p-4 border-t border-gray-700">

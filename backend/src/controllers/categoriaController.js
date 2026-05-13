@@ -14,7 +14,6 @@ const listarCategorias = async (req, res) => {
   }
 };
 
-// --- NOVA FUNÇÃO: CRIAR CATEGORIA ---
 const criarCategoria = async (req, res) => {
   try {
     const { nome } = req.body;
@@ -38,13 +37,11 @@ const criarCategoria = async (req, res) => {
   }
 };
 
-// --- NOVA FUNÇÃO: DELETAR CATEGORIA ---
 const deletarCategoria = async (req, res) => {
   try {
     const { id } = req.params;
     const usuario_id = req.usuarioId;
 
-    // Verifica se a categoria pertence a este usuário
     const categoria = await prisma.categoria.findFirst({
       where: { 
         id: Number(id),
@@ -63,9 +60,9 @@ const deletarCategoria = async (req, res) => {
     res.status(200).json({ mensagem: 'Categoria excluída com sucesso!' });
   } catch (erro) {
     console.error(erro);
-    // Se a categoria já estiver sendo usada em um lançamento, o banco bloqueia a exclusão
     res.status(500).json({ erro: 'Erro ao excluir. Verifique se existem lançamentos usando esta categoria.' });
   }
 };
 
+// Aqui é onde o erro acontece se faltar alguma função!
 module.exports = { listarCategorias, criarCategoria, deletarCategoria };
