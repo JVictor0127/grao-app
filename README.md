@@ -1,6 +1,3 @@
-Aqui está o seu texto formatado em Markdown, pronto para ser utilizado como o `README.md` do seu projeto:
-
-```markdown
 # 🌱 Grão - Controle Financeiro Inteligente
 
 O **Grão** é um ecossistema de gestão financeira desenvolvido para oferecer controle total sobre fluxos de caixa, unindo uma interface moderna a uma arquitetura robusta. Este projeto nasceu como o **MVP (Minimum Viable Product)** de uma solução voltada para assessoria e consultoria financeira.
@@ -70,14 +67,13 @@ npm install
 
 ```
 
-
-
-```
 3. Configure o arquivo `.env` com a sua `DATABASE_URL`.
+
+
 4. Execute as migrations do banco de dados:
-   ```bash
-   npx prisma migrate dev
-   
+
+```bash
+npx prisma migrate dev
 
 ```
 
@@ -85,45 +81,29 @@ npm install
 ```bash
 npm run dev
 
-
 ```
-
-
-
-```
-   *(A API estará rodando em `http://localhost:3333`)*
 
 ### Frontend
 
 1. Acesse a pasta da aplicação:
-   ```bash
-   cd frontend
+```bash
+cd frontend
    
-
 ```
 
 2. Instale as dependências:
 ```bash
 npm install
-
 ```
 
 
 3. Inicie a aplicação:
-```bash
+``` bash
 npm run dev
 
-
 ```
 
-
-
-```
-   *(A interface estará rodando em `http://localhost:5173`)*
-
----
-
-## 👤 Autor
+### 👤 Autor
 
 **João Victor Costa**
 * Analista de Suporte na Maxdata.
@@ -131,9 +111,3 @@ npm run dev
 * Estudante de Administração de Empresas (UEMASUL) focado em BI e Desenvolvimento Full-Stack.
 
 **Status do Projeto:** Em desenvolvimento (MVP Concluído).
-
-```
-
-```
-
-```
